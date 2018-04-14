@@ -13,6 +13,7 @@
 
 Route::get('/', 'LandingPageController@index')->name('landing-page');
 Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 Route::view('/about', 'about');
 Route::view('/add-to-wishlist', 'add-to-wishlist');
 Route::view('/blog', 'blog');
