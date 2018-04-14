@@ -50,7 +50,7 @@ class ShopController extends Controller
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
-        return view('shop.product')->with('product',$product);
+        return view('product.show')->with('product',$product);
     }
 
     /**

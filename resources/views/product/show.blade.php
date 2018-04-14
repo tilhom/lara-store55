@@ -3,13 +3,12 @@
 @section('extra-css')
 @endsection
 @section('content')
-@include('shop.partials.breadcrumb')
+@include('product.partials.breadcrumb')
 
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row">
-					@include('shop.partials.products')
-					@include('shop.partials.sidebar')
+					@include('product.partials.product-detail')
 				</div>
 			</div>
 		</div>
