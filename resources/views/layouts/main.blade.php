@@ -65,7 +65,8 @@
     @include('layouts.partials.nav')
 
     @yield('content')
-
+    
+	@include('layouts.partials.subscribe')
     @include('layouts.partials.footer')		
 
 	</div>
