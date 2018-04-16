@@ -14,10 +14,16 @@
 Route::get('/', 'LandingPageController@index')->name('landing-page');
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
+
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::post('/cart','CartController@store')->name('cart.store');
+
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+
 Route::view('/about', 'about');
 Route::view('/add-to-wishlist', 'add-to-wishlist');
 Route::view('/blog', 'blog');
-Route::view('/cart', 'cart');
+// Route::view('/cart', 'cart');
 Route::view('/checkout', 'checkout');
 Route::view('/contact', 'contact');
 Route::view('/order', 'order');

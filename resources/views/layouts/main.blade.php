@@ -63,7 +63,7 @@
 
 	<div id="page">
     @include('layouts.partials.nav')
-
+    @include('inc.messages')
     @yield('content')
     
 	@include('layouts.partials.subscribe')

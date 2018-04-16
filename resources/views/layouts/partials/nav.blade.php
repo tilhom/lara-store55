@@ -21,7 +21,8 @@
 						<li><a href="blog.html">Blog</a></li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact</a></li>
-						<li><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+						<li><a href="{{route('cart.index')}}"><i class="icon-shopping-cart"></i> Cart [@if (Cart::instance('default')->count() > 0)
+                    	{{ Cart::instance('default')->count() }}@endif]</a></li>
 					</ul>
 				</div>
 			</div>

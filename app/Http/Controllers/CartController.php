@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
-class ShopController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,9 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(6);
-
-        return view('shop.index')->
-                with('products', $products);
+        $mightAlsolike = Product::mightAlsolike()->get();
+        // dd(Cart::content());
+        return view('cart.index')->with('mightAlsolike',$mightAlsolike);
     }
 
     /**
@@ -38,7 +38,9 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add($request->id, $request->name,$request->quantity, $request->price)->associate('App\Product');
+        return redirect()->route('cart.index')->with('success_message','Item was added to your cart!');
+        // return view('cart')->with('success_message','Item was added to your cart!');
     }
 
     /**
@@ -47,15 +49,9 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
-
-        $mightAlsoLike = Product::where('slug', '!=', $slug)->inRandomOrder()->take(4)->get();
-        return view('product.show')->with([
-            'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike,
-        ]);
+        //
     }
 
     /**
@@ -89,6 +85,8 @@ class ShopController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+
+        return back()->with('success_message', 'Item has been removed!');
     }
 }
