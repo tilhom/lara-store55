@@ -1,9 +1,13 @@
-@extends('layout')
-@section('title', 'Shopping Cart')
+@extends('layouts.main')
+
+@section('title', 'Cart')
+
 @section('extra-css')
+
 @endsection
+
 @section('content')
-		<aside id="colorlib-hero" class="breadcrumbs">
+	<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
 			   	<li style="background-image: url(images/cover-img-1.jpg);">
@@ -21,7 +25,12 @@
 			   	</li>
 			  	</ul>
 		  	</div>
-		</aside>
+	</aside>
+	 @if (session()->has('success_message'))
+        <div class="alert alert-success">
+            {{ session()->get('success_message') }}
+        </div>
+    @endif 
 
 		<div class="colorlib-shop">
 			<div class="container">
@@ -276,31 +285,4 @@
 				</div>
 			</div>
 		</div>
-
-
-		<div id="colorlib-subscribe">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-6 text-center">
-							<h2><i class="icon-paperplane"></i>Sign Up for a Newsletter</h2>
-						</div>
-						<div class="col-md-6">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="row">
-									<div class="col-md-12 col-md-offset-0">
-										<div class="form-group">
-											<input type="text" class="form-control" id="email" placeholder="Enter your email">
-											<button type="submit" class="btn btn-primary">Subscribe</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 @endsection

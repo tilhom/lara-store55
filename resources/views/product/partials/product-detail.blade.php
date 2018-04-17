@@ -66,7 +66,17 @@
 							</div>
 						</div>
 					</div>
-					<p><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+					<p>
+						<form action="{{ route('cart.store') }}" method="POST">
+				            {{ csrf_field() }}
+				            <input type="hidden" name="id" value="{{ $product->id }}">
+				            <input type="hidden" name="name" value="{{ $product->name }}">
+				            <input type="hidden" name="price" value="{{ $product->price }}">
+				            <button type="submit" class="btn btn-primary btn-addtocart">
+				             <i class="icon-shopping-cart"></i>Add to Cart
+				        	</button>
+				        </form>
+					</p>
 				</div>
 			</div>
 		</div>
