@@ -124,6 +124,6 @@ Route::get('/', 'LandingPageController@index')->name('landing-page');
 
 10. shop controllerini yasash
 	php artisan make:controller ShopController -r  	    
-
+11. branch va merge o'rganish
 
 
