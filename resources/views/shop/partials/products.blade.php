@@ -11,7 +11,16 @@
 						@endif
 						<div class="cart">
 						<p>
-							<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
+							<span class="addtocart">
+							<form action="{{ route('cart.store') }}" method="POST" class="pull-left">
+				            {{ csrf_field() }}
+				            <input type="hidden" name="id" value="{{ $product->id }}">
+				            <input type="hidden" name="name" value="{{ $product->name }}">
+				            <input type="hidden" name="price" value="{{ $product->price }}">
+				            <button><i class="icon-shopping-cart"></i></button>
+				        	</form>
+								<!-- <a href=""><i class="icon-shopping-cart"></i></a> -->
+							</span> 
 							<span><a href="{{route('shop.show',$product->slug)}}"><i class="icon-eye"></i></a></span> 
 							<span><a href="#"><i class="icon-heart3"></i></a></span>
 							<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
