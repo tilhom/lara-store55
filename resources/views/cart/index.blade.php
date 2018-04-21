@@ -88,7 +88,6 @@
 									<div class="total">
 										<div class="sub">
 											<p>
-												<?php dump(Cart::subtotal()) ?>
 												<span>Subtotal:</span> 
 												<span>{{Cart::subtotal()}}</span>
 											</p>
