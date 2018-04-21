@@ -3,13 +3,13 @@
 		@foreach($products as $product)
 		<div class="col-md-4 text-center">
 			<div class="product-entry">
-				<div class="product-img" style="background-image: url({{$product->image}});">
-						@if($product->sale)
-							<p class="tag"><span class="sale">Sale</span></p>
-						@elseif($product->new)
-							<p class="tag"><span class="new">New</span></p>
-						@endif
-						<div class="cart">
+				<a href="{{ route('shop.show', $product->slug) }}"></a><div class="product-img" style="background-image: url({{ asset($product->image) }});"></a>
+					@if($product->sale)
+					<p class="tag"><span class="sale">Sale</span></p>
+					@elseif($product->new)
+					<p class="tag"><span class="new">New</span></p>
+					@endif
+					<div class="cart">
 						<p>
 							<span class="addtocart">
 							<form action="{{ route('cart.store') }}" method="POST" class="pull-left">
@@ -28,16 +28,15 @@
 					</div>
 				</div>
 				<div class="desc">
-					<h3><a href="product-detail.html">{{$product->name}}</a></h3>
+					<h3><a href="{{ route('shop.show', $product->slug) }}">{{$product->name}}</a></h3>
 					<p class="price">
-						<span>{{$product->newprice?$product->newprice:''}}</span> 
-						<span class="{{$product->newprice?'sale':''}}">
-							{{$product->price}}</span>
+						<span>{{$product->newprice?"$".$product->presentNewPrice():''}}</span> 
+						<span class="{{$product->newprice?'sale':''}}">${{$product->presentPrice()}}</span>
 					</p>
 				</div>
 			</div>
 		</div>
-		@endforeach	
+		@endforeach
 	</div>
 	<div class="row">
 		<div class="col-md-12">

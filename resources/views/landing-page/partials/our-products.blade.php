@@ -19,17 +19,17 @@
 						<div class="cart">
 							<p>
 								<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-								<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+								<span><a href="{{ route('shop.show', $product->slug) }}"><i class="icon-eye"></i></a></span> 
 								<span><a href="#"><i class="icon-heart3"></i></a></span>
 								<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
 							</p>
 						</div>
 					</div>
 					<div class="desc">
-						<h3><a href="shop.html">{{$product->name}}</a></h3>
+						<h3><a href="{{ route('shop.show', $product->slug) }}">{{$product->name}}</a></h3>
 						<p class="price">
-							<span>{{$product->newprice?$product->newprice:''}}</span> 
-							<span class="{{$product->newprice?'sale':''}}">{{$product->price}}</span>
+							<span>{{$product->newprice?$product->presentNewPrice():''}}</span> 
+							<span class="{{$product->newprice?'sale':''}}">{{$product->presentPrice()}}</span>
 						</p>
 					</div>
 				</div>
