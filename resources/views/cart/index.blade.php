@@ -74,7 +74,6 @@
 							</div>
 						</div>
 						@endforeach
-
 					</div>
 				</div>
 				<div class="row">
@@ -126,4 +125,5 @@
 		</div>
 
 		@include('layouts.partials.recommended-products')
+
 @endsection

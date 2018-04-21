@@ -22,6 +22,7 @@
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact</a></li>
 						<li><a href="{{route('cart.index')}}"><i class="icon-shopping-cart"></i> Cart [{{Cart::count()}}]</a></li>
+
 					</ul>
 				</div>
 			</div>
